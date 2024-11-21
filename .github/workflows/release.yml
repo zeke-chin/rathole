@@ -67,6 +67,11 @@ jobs:
             exe: rathole
             cross: false
 
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            exe: rathole
+            cross: false
+
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             exe: rathole.exe
@@ -119,7 +124,7 @@ jobs:
           version: v4.0.2
           files: target/${{ matrix.target }}/release/${{ matrix.exe }}
           args: -q --best --lzma
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: rathole-${{ matrix.target }}
           path: target/${{ matrix.target }}/release/${{ matrix.exe }}
